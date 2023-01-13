@@ -100,12 +100,12 @@ class EndlessService : Service() {
         // we're starting a loop in a coroutine
         GlobalScope.launch(Dispatchers.IO) {
             while (isServiceStarted) {
+                delay(1 * 60 * 1000)
                 launch(Dispatchers.IO) {
                     if (isMining) {
                         pingMiningServer()
                     }
                 }
-                delay(1 * 60 * 1000)
             }
             log("End of the loop for the service")
         }
